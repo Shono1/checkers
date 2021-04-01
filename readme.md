@@ -78,6 +78,17 @@ for piece in game.board.pieces:
 	piece.get_possible_positional_moves() #[[int, int], [int, int], ...]
 ```
 
+Get a string representation of the pieces on the board:
+
+
+```python
+str(game.board)
+```
+Output:
+
+![Output](Assets/img.png)
+
+
 # Testing
 
 Run `python3 -m unittest discover` from the root.
