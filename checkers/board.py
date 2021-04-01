@@ -2,6 +2,7 @@ from copy import deepcopy
 from functools import reduce
 from .board_searcher import BoardSearcher
 from .board_initializer import BoardInitializer
+from colorama import Fore
 
 class Board:
 
@@ -87,3 +88,27 @@ class Board:
 			[piece.reset_for_new_board() for piece in self.pieces]
 
 			self.searcher.build(self)
+
+	def __str__(self):
+		greensq = Fore.GREEN + "🟥"
+		whitesq = Fore.WHITE + "🟥"
+		blackpc = Fore.BLACK + "🟥"
+		redpc = Fore.RED + "🟥"
+		ret = ""
+		brd = ["_"] * 64
+		for i in range(64):
+			if (i // 8) % 2 == 0:
+				brd[i] = greensq if i % 2 == 0 else whitesq
+			else:
+				brd[i] = whitesq if i % 2 == 0 else greensq
+
+		for player in self.searcher.player_positions.items():
+			for piece in player[1]:
+				brd[(piece - 1) * 2 + (((piece - 1) * 2) // 8) % 2] = redpc if player[0] == 1 else blackpc
+
+		for i in range(8):
+			for k in range(8):
+				ret += str(brd[8*i + k])
+			ret += "\n"
+
+		return ret
