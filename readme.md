@@ -1,12 +1,12 @@
 A Python3 library that you can use to play a game of checkers/draughts. This is just a set of classes that you can use in your code, it's not an interactive shell checkersgame.
 
-- **Version:** 1.4.2
-
-[![Build Status](https://travis-ci.org/ImparaAI/checkers.png?branch=master)](https://travis-ci.org/ImparaAI/checkers)
-
+#Note:
+This is a modified version of the [Imparaai checkers library](https://github.com/ImparaAI/checkers).
+Alongside the base module (which I forked from the repository at the above link), the Colorama and PrettyTable dependencies are also in use.
+The only addition I have made to this module is a graphical representation of the board.
 # Assumptions
 
-The rules used are for competitive American checkers or English draughts. This means an 8x8 board with force captures and regular kings.
+The rules used are for competitive American checkers or English draughts. This means an 8x8 board with **force captures** and regular kings.
 
 Each position on the board is numbered 1 to 32. Each move is represented as an array with two values: starting position and ending position. So if you're starting a new game, one of the available moves is `[9, 13]` for player 1. If there's a capture move, the ending position is the position the capturing piece will land on (i.e. two rows from its original row), which might look like `[13, 22]`.
 
@@ -86,7 +86,7 @@ str(game.board)
 ```
 Output:
 
-![Output](Assets/img.png)
+![Output](Assets/img_1.png)
 
 
 # Testing
