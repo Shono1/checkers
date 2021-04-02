@@ -4,8 +4,8 @@ with open("readme.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name = "imparaai-checkers-for-BFHS-programming",
-    version = "1.4.2",
+    name = "imparaai-BFHScheckers-for-BFHS-programming",
+    version = "1.4.2.3",
     license = 'MIT',
     author = "Shono1",
     author_email = "shonor47@gmail.com",

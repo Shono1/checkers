@@ -17,7 +17,7 @@ Each piece movement is completely distinct, even if the move is part of a multip
 Create a new game:
 
 ```python
-from checkers.game import Game
+from BFHScheckers.game import Game
 
 game = Game()
 ```
@@ -86,7 +86,7 @@ str(game.board)
 ```
 Output:
 
-![Output](Assets/img_1.png)
+![Output](img_1.png)
 
 
 # Testing
