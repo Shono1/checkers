@@ -1,5 +1,5 @@
 import unittest
-from checkers.game import Game
+from BFHScheckers.game import Game
 
 import random
 
