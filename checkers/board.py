@@ -2,6 +2,7 @@ from copy import deepcopy
 from functools import reduce
 from .board_searcher import BoardSearcher
 from .board_initializer import BoardInitializer
+from prettytable import PrettyTable, NONE
 from colorama import Fore, Back, Style
 
 
@@ -91,14 +92,14 @@ class Board:
 			self.searcher.build(self)
 
 	def __str__(self):
-
-		greensq = Fore.GREEN + "🟥"
-		whitesq = Fore.WHITE + "🟥"
-		blackpc = Fore.BLACK + "🟥"
-		redpc = Fore.RED + "🟥"
-		blackkg = Fore.BLACK + Back.YELLOW + "🟥" + Back.RESET
-		redkg = Fore.RED + Back.YELLOW + "🟥" + Back.RESET
-		ret = ""
+		x = PrettyTable()
+		x.field_names = [" ", "a", "b", "c", "d", "e", "f", "g", "h"]
+		greensq = Back.GREEN + "   " + Back.RESET
+		whitesq = Back.WHITE + "   " + Back.RESET
+		blackpc = Back.BLACK + "   " + Back.RESET
+		redpc = Back.RED + "   " + Back.RESET
+		blackkg = Back.BLACK + Fore.YELLOW + " K " + Back.RESET + Fore.RESET
+		redkg = Back.RED + Fore.BLACK + " K " + Back.RESET + Fore.RESET
 		brd = ["_"] * 64
 		for i in range(64):
 			if (i // 8) % 2 == 0:
@@ -112,10 +113,8 @@ class Board:
 					brd[(piece - 1) * 2 + (((piece - 1) * 2) // 8) % 2] = redkg if player[0] == 1 else blackkg
 				else:
 					brd[(piece - 1) * 2 + (((piece - 1) * 2) // 8) % 2] = redpc if player[0] == 1 else blackpc
-
-		for i in range(8):
-			for k in range(8):
-				ret += str(brd[8*i + k])
-			ret += "\n"
-
-		return ret
+		for k in range(0, 57, 8):
+			x.add_row([str(k // 8 + 1)] + brd[k:k+8])
+		x.padding_width = 0
+		x.vrules = NONE
+		return x.get_string()
