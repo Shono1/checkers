@@ -8,7 +8,7 @@ The only addition I have made to this module is a graphical representation of th
 
 The rules used are for competitive American checkers or English draughts. This means an 8x8 board with **force captures** and regular kings.
 
-Each position on the board is numbered 1 to 32. Each move is represented as an array with two values: starting position and ending position. So if you're starting a new game, one of the available moves is `[9, 13]` for player 1. If there's a capture move, the ending position is the position the capturing piece will land on (i.e. two rows from its original row), which might look like `[13, 22]`.
+Each position on the board is numbered 1 to 32 (These are the GREEN squares, starting with b1 as 1, d1 as 2, a2 as 5, all the way to g8 as 32). Each move is represented as an array with two values: starting position and ending position. So if you're starting a new game, one of the available moves is `[9, 13]` for player 1. If there's a capture move, the ending position is the position the capturing piece will land on (i.e. two rows from its original row), which might look like `[13, 22]`.
 
 Each piece movement is completely distinct, even if the move is part of a multiple capture series. In [Portable Draughts Notation](https://en.wikipedia.org/wiki/Portable_Draughts_Notation) mutli-capture series are usually represented by a `5-32` (for a particularly long series of jumps), but in certain situations there could be multiple pathways to achieve that final position. This game requires an explicit spelling out of each distinct move in the multi-capture series.
 
@@ -58,7 +58,7 @@ Review the move history:
 game.moves #[[int, int], [int, int], ...]
 ```
 
-Change the consecutive noncapture move limit (default `40` according to the [rules](http://www.usacheckers.com/rulesofcheckers.php)):
+Change the consecutive noncapture move limit (default `40` according to the [rules](https://en.wikipedia.org/wiki/English_draughts#Rules)):
 
 ```python
 game.consecutive_noncapture_move_limit = 20
