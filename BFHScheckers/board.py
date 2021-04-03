@@ -103,16 +103,17 @@ class Board:
 		brd = ["_"] * 64
 		for i in range(64):
 			if (i // 8) % 2 == 0:
-				brd[i] = greensq if i % 2 == 0 else whitesq
-			else:
 				brd[i] = whitesq if i % 2 == 0 else greensq
+			else:
+				brd[i] = greensq if i % 2 == 0 else whitesq
 
 		for player in self.searcher.player_positions.items():
 			for piece in player[1]:
 				if self.searcher.get_piece_by_position(piece).king:
-					brd[(piece - 1) * 2 + (((piece - 1) * 2) // 8) % 2] = redkg if player[0] == 1 else blackkg
+					brd[(piece - 1) * 2 + 1 - (((piece - 1) * 2) // 8) % 2] = blackkg if player[0] == 1 else redkg
 				else:
-					brd[(piece - 1) * 2 + (((piece - 1) * 2) // 8) % 2] = redpc if player[0] == 1 else blackpc
+					brd[(piece - 1) * 2 + 1 - (((piece - 1) * 2) // 8) % 2] = redpc if player[0] == 1 else blackpc
+
 		for k in range(0, 57, 8):
 			x.add_row([str(k // 8 + 1)] + brd[k:k+8])
 		x.padding_width = 0
